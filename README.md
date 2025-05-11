@@ -38,7 +38,7 @@ Finally {
 # === CONFIGURATION ===
 $serverName = "(local)"             # SQL Server name or instance (e.g., "localhost\SQLEXPRESS")
 $databaseName = "YourDatabaseName"  # Database name
-$outputFolder = "C:\StoredProceduresExport"  # Output folder path for .sql files
+$outputFolder = "D:\StoredProceduresExport"  # Output folder path for .sql files
 
 # === PREPARE OUTPUT FOLDER ===
 if (!(Test-Path -Path $outputFolder)) {

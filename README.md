@@ -2,6 +2,11 @@
 
 PowerShell script that generates the full T-SQL body of all stored procedures in a SQL Server database
 
+* Microsoft.SqlServer.SMO
+* Microsoft.SqlServer.Management.Sdk.Sfc
+* Microsoft.SqlServer.ConnectionInfo
+* Microsoft.SqlServer.SmoExtended
+
 ## PowerShell Script — Template
 ```
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned -Force

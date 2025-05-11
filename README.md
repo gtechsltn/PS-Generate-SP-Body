@@ -7,6 +7,74 @@ PowerShell script that generates the full T-SQL body of all stored procedures in
 * Microsoft.SqlServer.ConnectionInfo
 * Microsoft.SqlServer.SmoExtended
 
+### Step 1 — Install SqlServer PowerShell module
+
+Open PowerShell (as Administrator) and run:
+
+```Install-Module -Name SqlServer -Scope CurrentUser -Force```
+
+This installs the modern SMO libraries + Invoke-Sqlcmd
+
+It works for SQL Server 2012+, including SQL 2019, 2022
+
+### Step 2 — Use Invoke-Sqlcmd to dump all stored procedure bodies
+
+No SMO objects — just pure T-SQL!
+
+```
+# === CONFIGURATION ===
+$serverName = "MANH"             # SQL Server name or instance
+$databaseName = "mssql"  # Your target database
+$outputFolder = "C:\StoredProceduresExport"  # Output folder path for .sql files
+
+# Ensure output folder exists
+if (!(Test-Path -Path $outputFolder)) {
+    New-Item -ItemType Directory -Path $outputFolder | Out-Null
+}
+
+# Get all stored procedure definitions
+$query = @"
+SELECT 
+    SCHEMA_NAME(p.schema_id) AS SchemaName,
+    p.name AS ProcedureName,
+    m.definition AS ProcedureDefinition
+FROM sys.procedures p
+JOIN sys.sql_modules m ON p.object_id = m.object_id
+ORDER BY SchemaName, ProcedureName
+"@
+
+# Run query using Invoke-Sqlcmd
+$procs = Invoke-Sqlcmd -ServerInstance $serverName -Database $databaseName -Query $query
+
+foreach ($proc in $procs) {
+    $schemaName = $proc.SchemaName
+    $procName = $proc.ProcedureName
+    $definition = $proc.ProcedureDefinition
+
+    # Build file name
+    $fileName = "${schemaName}.${procName}.sql"
+    $filePath = Join-Path $outputFolder $fileName
+
+    # Optional header (SET options)
+    $header = @"
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+"@
+
+    # Compose full script
+    $fullScript = $header + "`r`n" + $definition + "`r`nGO"
+
+    # Write to file
+    $fullScript | Out-File -FilePath $filePath -Encoding UTF8
+
+    Write-Host "Scripted: $schemaName.$procName -> $fileName"
+}
+
+Write-Host "`n✅ All stored procedures scripted to: $outputFolder"
+```
+
 ## PowerShell Script — Template
 ```
 Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned -Force

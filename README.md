@@ -22,11 +22,10 @@ Try {
 }
 Catch [System.Exception] {
     # Code to handle the error
-    # Write-Host $_.Exception.Message -ForegroundColor Red -BackgroundColor Yellow
+    Write-Host $_.Exception.Message -ForegroundColor Red -BackgroundColor Yellow
 }
 Finally {
     # Code that runs regardless of an error occurring or not
-
     Set-Location -Path $CurrentDir -PassThru
     Write-Host "Set-Location -Path '$CurrentDir' : DONE" -ForegroundColor DarkGreen -BackgroundColor Black
     Write-Host "------------------------------------------------------------" -ForegroundColor DarkGreen -BackgroundColor Black

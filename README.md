@@ -2,6 +2,32 @@
 
 PowerShell script that generates the full T-SQL body of all stored procedures in a SQL Server database
 
+## PowerShell Script — Template
+```
+Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned -Force
+
+Clear-Host
+
+$CurrentDir = (Get-Location).Path
+Write-Host "Get-Location into CurrentDir variable: DONE" -ForegroundColor DarkGreen -BackgroundColor Black
+
+Try {    
+    # Code that may throw an exception
+    # TODO: 
+}
+Catch [System.Exception] {
+    # Code to handle the error
+    # Write-Host $_.Exception.Message -ForegroundColor Red -BackgroundColor Yellow
+}
+Finally {
+    # Code that runs regardless of an error occurring or not
+
+    Set-Location -Path $CurrentDir -PassThru
+    Write-Host "Set-Location -Path '$CurrentDir' : DONE" -ForegroundColor DarkGreen -BackgroundColor Black
+    Write-Host "------------------------------------------------------------" -ForegroundColor DarkGreen -BackgroundColor Black
+}
+```
+
 ## PowerShell Script — Generate All Stored Procedure Bodies
 ```
 # === CONFIGURATION ===

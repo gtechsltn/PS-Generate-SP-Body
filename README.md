@@ -1,5 +1,6 @@
 # PS-Generate-SP-Body
-PowerShell script that generates the full T-SQL body of all stored procedures in a SQL Server database
+* PowerShell script that generates the full T-SQL body of all stored procedures in a SQL Server database
+* [Program.cs](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/GenerateSPBody/Program.cs)
 
 # C# Console App (clean and ready)
 ```

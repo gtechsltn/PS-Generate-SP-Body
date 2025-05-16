@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.IO;
 
-namespace GenerateSPBody
+namespace DumpDB
 {
     internal class Program
     {

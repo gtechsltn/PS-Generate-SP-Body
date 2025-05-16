@@ -2,10 +2,10 @@
 * PowerShell script that generates the full T-SQL body of all stored procedures in a SQL Server database
 * ADO.NET: Get All SQL Stored Procedures Bodies in SQL Server
 * ADO.NET: Get All SQL Function Bodies in SQL Server
-* [Program.cs (Stored Procedures' Bodies)](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/GenerateSPBody/Program.cs)
-* [Program.cs (Stored Procedures' Bodies)](https://github.com/gtechsltn/PS-Generate-SP-Body/blob/master/src/DumpSP/Program.cs)
-* [Program.cs (Functions' Bodies)](https://github.com/gtechsltn/PS-Generate-SP-Body/blob/master/src/DumpFN/Program.cs)
-* [Program.cs (Views' Bodies)](https://github.com/gtechsltn/PS-Generate-SP-Body/blob/master/src/DumpVW/Program.cs)
+* [Program.cs (Stored Procedures' Content)](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/GenerateSPBody/Program.cs)
+* [Program.cs (Stored Procedures' Bodies)](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/DumpSP/Program.cs)
+* [Program.cs (Functions' Bodies)](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/DumpFN/Program.cs)
+* [Program.cs (Views' Bodies)](https://raw.githubusercontent.com/gtechsltn/PS-Generate-SP-Body/refs/heads/master/src/DumpVW/Program.cs)
 
 # C# Console App (clean and ready)
 ```
